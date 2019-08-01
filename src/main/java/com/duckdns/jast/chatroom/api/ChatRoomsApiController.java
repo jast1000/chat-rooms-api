@@ -20,7 +20,8 @@ public class ChatRoomsApiController implements ChatRoomsApi {
 
     public ResponseEntity<?> deleteChatRoom(Integer chatRoomId) throws ChatRoomNotFoundException {
     	chatRoomSrv.deleteChatRoom(chatRoomId);
-        return ResponseEntity.ok().build();
+    	ApiResponseMessage response = new ApiResponseMessage(ApiResponseMessage.OK, "Chat room deleted");
+        return ResponseEntity.ok(response);
     }
 
     public ResponseEntity<?> findChatRoom(Integer chatRoomId) throws ChatRoomNotFoundException {
@@ -35,12 +36,14 @@ public class ChatRoomsApiController implements ChatRoomsApi {
 
     public ResponseEntity<?> saveChatRoom(ChatRoom body) {
     	chatRoomSrv.saveChatRoom(body);
-    	return ResponseEntity.status(HttpStatus.CREATED).build();
+    	ApiResponseMessage response = new ApiResponseMessage(ApiResponseMessage.OK, "Chat room created");
+    	return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     public ResponseEntity<?> updateChatRoom(Integer chatRoomId, ChatRoom body) throws ChatRoomNotFoundException {
     	chatRoomSrv.updateChatRoom(chatRoomId, body);
-    	return ResponseEntity.ok().build();
+    	ApiResponseMessage response = new ApiResponseMessage(ApiResponseMessage.OK, "Chat room updated");
+    	return ResponseEntity.ok(response);
     }
 
 }

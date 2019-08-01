@@ -34,9 +34,9 @@ public class ChatRoomsApiFacade implements ChatRoomsApi {
 			notes = "Delete a chat room by identifier", 
 			tags = { "chat rooms", })
 	@ApiResponses(value = { 
-			@ApiResponse(code = 200, message = "Success"),
+			@ApiResponse(code = 200, message = "Success", response = ApiResponseMessage.class ),
 			@ApiResponse(code = 404, message = "Chat room not found"),
-			@ApiResponse(code = 500, message = "Server error") })
+			@ApiResponse(code = 500, message = "Server error", response = ApiResponseMessage.class ) })
 	@RequestMapping(
 			value = "/chat-rooms/{chatRoomId}", 
 			produces = { "application/json" }, 
@@ -56,7 +56,7 @@ public class ChatRoomsApiFacade implements ChatRoomsApi {
 	@ApiResponses(value = { 
 			@ApiResponse(code = 200, message = "Success", response = ChatRoom.class),
 			@ApiResponse(code = 404, message = "Chat room not found"),
-			@ApiResponse(code = 500, message = "Server error") })
+			@ApiResponse(code = 500, message = "Server error", response = ApiResponseMessage.class) })
 	@RequestMapping(
 			value = "/chat-rooms/{chatRoomId}", 
 			produces = { "application/json" }, 
@@ -76,7 +76,7 @@ public class ChatRoomsApiFacade implements ChatRoomsApi {
 			tags = { "chat rooms", })
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success", response = ChatRoom.class, responseContainer = "List"),
-			@ApiResponse(code = 500, message = "Server error") })
+			@ApiResponse(code = 500, message = "Server error", response = ApiResponseMessage.class) })
 	@RequestMapping(
 			value = "/chat-rooms", 
 			produces = { "application/json" }, 
@@ -91,8 +91,8 @@ public class ChatRoomsApiFacade implements ChatRoomsApi {
 			notes = "Create a chat room", 
 			tags = { "chat rooms", })
 	@ApiResponses(value = { 
-			@ApiResponse(code = 201, message = "Success"),
-			@ApiResponse(code = 500, message = "Server error") })
+			@ApiResponse(code = 201, message = "Success", response = ApiResponseMessage.class),
+			@ApiResponse(code = 500, message = "Server error", response = ApiResponseMessage.class) })
 	@RequestMapping(
 			value = "/chat-rooms", 
 			produces = { "application/json" }, 
@@ -109,9 +109,9 @@ public class ChatRoomsApiFacade implements ChatRoomsApi {
 			notes = "Update chat room data", 
 			tags = { "chat rooms", })
 	@ApiResponses(value = { 
-			@ApiResponse(code = 200, message = "Success"),
+			@ApiResponse(code = 200, message = "Success", response = ApiResponseMessage.class),
 			@ApiResponse(code = 404, message = "Chat room not found"),
-			@ApiResponse(code = 500, message = "Server error") })
+			@ApiResponse(code = 500, message = "Server error", response = ApiResponseMessage.class) })
 	@RequestMapping(
 			value = "/chat-rooms/{chatRoomId}", 
 			produces = { "application/json" }, 

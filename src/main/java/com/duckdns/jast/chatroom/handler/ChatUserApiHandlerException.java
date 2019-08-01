@@ -8,18 +8,19 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.duckdns.jast.chatroom.api.ApiResponseMessage;
-import com.duckdns.jast.chatroom.api.ChatRoomsApi;
-import com.duckdns.jast.chatroom.exception.ChatRoomNotFoundException;
+import com.duckdns.jast.chatroom.api.ChatUserApi;
+import com.duckdns.jast.chatroom.exception.NewUserInvalidException;
 
-@ControllerAdvice(assignableTypes = ChatRoomsApi.class )
-public class ChatRoomsApiHandlerException {
-	
+@ControllerAdvice(assignableTypes = ChatUserApi.class)
+public class ChatUserApiHandlerException {
+
 	private final Logger LOG = LoggerFactory.getLogger(ChatRoomsApiHandlerException.class);
 	
-	@ExceptionHandler(ChatRoomNotFoundException.class)
-	private ResponseEntity<?> handlerChatRoomNotFoundException(ChatRoomNotFoundException ex) {
+	@ExceptionHandler(NewUserInvalidException.class)
+	private ResponseEntity<?> handlerNewUserInvalidException(NewUserInvalidException ex) {
 		LOG.warn(ex.getMessage());
-		return ResponseEntity.notFound().build();
+		ApiResponseMessage response = new ApiResponseMessage(ApiResponseMessage.ERROR, "The username or password is invalid");
+		return ResponseEntity.badRequest().body(response);
 	}
 	
 	@ExceptionHandler(Exception.class) 
