@@ -1,4 +1,4 @@
-package com.duckdns.jast.chatroom.api;
+package com.duckdns.jast.chatroom.configuration;
 
 import java.io.IOException;
 
